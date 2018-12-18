@@ -4,14 +4,15 @@
 #'
 #' @param stmt Custom query string
 #' @return Dataframe results of query as dataframe
+#' @export query
 query <- function(stmt) {
   results <- tryCatch(
     {
       if (is.null(stmt))
         stop("SQL query is undefined.")
 
-      conn <- gwasdbconnector::connect()
-      results <- RPostgres::dbGetQuery(conn, stmt)
+      conn <- connect()
+      results <- RPostgres::dbGetQuery(conn, statement = stmt)
       return(results)
     },
     error=function(cond) {
@@ -23,10 +24,6 @@ query <- function(stmt) {
       return(NULL)
     },
     finally={
-      # Step 4: Clear results
-      if (exists("res"))
-        RPostgres::dbClearResult(res = res)
-      # Step 5: Close up connection to database
       RPostgres::dbDisconnect(conn)
     }
   )

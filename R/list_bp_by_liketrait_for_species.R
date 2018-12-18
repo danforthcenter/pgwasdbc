@@ -2,6 +2,7 @@
 #' @param trait String name of the trait of interest
 #' @param species String name of the species of interest
 #' @return Dataframe results of query
+#' @export list_bp_by_liketrait_for_species
 list_bp_by_liketrait_for_species <- function(trait, species) {
   # Input validation
   results <- tryCatch(
@@ -10,7 +11,7 @@ list_bp_by_liketrait_for_species <- function(trait, species) {
         stop("Trait is undefined.")
       if (is.null(species))
         stop("Species is undefined.")
-      conn <- gwasdbconnector::connect()
+      conn <- connect()
       # For prepared statements, we cannot use dbGetQuery because
       # the action must be performed separatedly
 

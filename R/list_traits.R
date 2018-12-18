@@ -1,11 +1,12 @@
 #' List available traits
 #' @description List all the known unique traits for all datasets
 #' @return List
+#' @export list_traits
  list_traits <- function() {
   results <- tryCatch(
     {
-      conn <- gwasdbconnector::connect()
-      results <- RPostgres::dbGetQuery(conn,stmt = "SELECT DISTINCT t.trait_name FROM trait t;")
+      conn <- connect()
+      results <- RPostgres::dbGetQuery(conn = conn, statement = "SELECT DISTINCT t.trait_name FROM trait t;")
       return(results)
     },
     error=function(cond) {
@@ -17,10 +18,6 @@
       return(NULL)
     },
     finally={
-      # Step 4: Clear results
-      if (exists("res"))
-        RPostgres::dbClearResult(res = res)
-      # Step 5: Close up connection to database
       RPostgres::dbDisconnect(conn)
     }
   )
