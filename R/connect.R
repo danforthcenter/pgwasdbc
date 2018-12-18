@@ -1,8 +1,6 @@
 #' Connection
 #'
-#' This is an example function that connects to
-#' a local Docker instance of the GWAS database.
-#'
+#' @description This is an example function that connects to a local Docker instance of the GWAS database.
 #' @param drv DBI driver
 #' @param dbname String name of the database (default: gwasdb)
 #' @param host Host of database (default: localhost)
@@ -10,7 +8,6 @@
 #' @param user String (default: postgres)
 #' @param password String (default: password)
 #' @return A connection object
-
 connect <- function(drv = RPostgres::Postgres(),
                     dbname = "baxdb",
                     host = "localhost",

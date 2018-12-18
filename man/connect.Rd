@@ -25,6 +25,5 @@ connect(drv = RPostgres::Postgres(), dbname = "baxdb",
 A connection object
 }
 \description{
-This is an example function that connects to
-a local Docker instance of the GWAS database.
+This is an example function that connects to a local Docker instance of the GWAS database.
 }

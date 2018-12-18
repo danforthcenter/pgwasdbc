@@ -4,12 +4,10 @@
 \alias{query}
 \title{Query}
 \usage{
-query(conn, sql)
+query(stmt)
 }
 \arguments{
-\item{conn}{Connection object to database}
-
-\item{sql}{Custom query string}
+\item{stmt}{Custom query string}
 }
 \value{
 Dataframe results of query as dataframe

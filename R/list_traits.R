@@ -1,17 +1,11 @@
-#' Query
-#'
-#' This is a function intended to processing custom queries to the GWAS database.
-#'
-#' @param stmt Custom query string
-#' @return Dataframe results of query as dataframe
-query <- function(stmt) {
+#' List available traits
+#' @description List all the known unique traits for all datasets
+#' @return List
+ list_traits <- function() {
   results <- tryCatch(
     {
-      if (is.null(stmt))
-        stop("SQL query is undefined.")
-
       conn <- gwasdbconnector::connect()
-      results <- RPostgres::dbGetQuery(conn, stmt)
+      results <- RPostgres::dbGetQuery(conn,stmt = "SELECT DISTINCT t.trait_name FROM trait t;")
       return(results)
     },
     error=function(cond) {
