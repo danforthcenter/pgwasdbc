@@ -2,12 +2,12 @@
 % Please edit documentation in R/list_bp_by_liketrait_for_species.R
 \name{list_bp_by_liketrait_for_species}
 \alias{list_bp_by_liketrait_for_species}
-\title{List available traits}
+\title{List the chromosome and SNP position for a given trait and species}
 \usage{
 list_bp_by_liketrait_for_species(trait, species)
 }
 \arguments{
-\item{trait}{String name of the trait of interest}
+\item{trait}{String name of the trait of interest. This will match any trait that contains this value.}
 
 \item{species}{String name of the species of interest}
 }
@@ -15,5 +15,5 @@ list_bp_by_liketrait_for_species(trait, species)
 Dataframe results of query
 }
 \description{
-List available traits
+Given a trait and species, return the chromosome and SNP position
 }

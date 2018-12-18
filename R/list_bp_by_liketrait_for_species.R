@@ -1,5 +1,6 @@
-#' List available traits
-#' @param trait String name of the trait of interest
+#' List the chromosome and SNP position for a given trait and species
+#' @description Given a trait and species, return the chromosome and SNP position
+#' @param trait String name of the trait of interest. This will match any trait that contains this value.
 #' @param species String name of the species of interest
 #' @return Dataframe results of query
 #' @export list_bp_by_liketrait_for_species
