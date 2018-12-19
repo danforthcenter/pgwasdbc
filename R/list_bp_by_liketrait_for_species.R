@@ -2,9 +2,10 @@
 #' @description Given a trait and species, return the chromosome and SNP position
 #' @param trait String name of the trait of interest. This will match any trait that contains this value.
 #' @param species String name of the species of interest
+#' @param cutoff Numeric (float) maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.
 #' @return Dataframe results of query
 #' @export list_bp_by_liketrait_for_species
-list_bp_by_liketrait_for_species <- function(trait, species) {
+list_bp_by_liketrait_for_species <- function(trait, species, cutoff) {
   # Input validation
   results <- tryCatch(
     {
@@ -12,6 +13,8 @@ list_bp_by_liketrait_for_species <- function(trait, species) {
         stop("Trait is undefined.")
       if (is.null(species))
         stop("Species is undefined.")
+      if (!is.null(cutoff) & !is.na(cutoff) & !is.numeric(cutoff))
+        stop("Cutoff value provided is invalid. Please enter a decimal number between 0.0 and 1.0")
       conn <- connect()
       # For prepared statements, we cannot use dbGetQuery because
       # the action must be performed separatedly
@@ -36,12 +39,19 @@ list_bp_by_liketrait_for_species <- function(trait, species) {
                 AND s.binomial = $2
                 AND gres.cofactor = 1
               "
-
+      # When a cutoff p-value is provided, add the condition to the SQL statement
+      if (!is.null(cutoff)) {
+        stmt <- paste0(stmt, "\nAND gres.model_added_pval <= $3")
+      }
       # Step 2: Send query
       res <- RPostgres::dbSendQuery(conn = conn, statement = stmt)
       # Step 3: Prepend and append wildcard characters and bind parameters
       trait <- paste0("%", trait, "%")
       params <- list(trait, species)
+      # When a cutoff p-value is provided, add the cutoff value to the parameter list
+      if (!is.null(cutoff)) {
+        params <- c(params, cutoff)
+      }
       RPostgres::dbBind(res = res, params = params)
       # Step 4: Fetch results
       results <- RPostgres::dbFetch(res)
@@ -60,7 +70,7 @@ list_bp_by_liketrait_for_species <- function(trait, species) {
       if (exists("res"))
         RPostgres::dbClearResult(res = res)
       # Step 6: Close up connection to database
-      RPostgres::dbDisconnect(conn)
+      # RPostgres::dbDisconnect(conn)
     }
   )
 }
@@ -71,9 +81,10 @@ list_bp_by_liketrait_for_species <- function(trait, species) {
 #' @seealso \code{\link{list_bp_by_liketrait_for_species}}
 #' @param trait String name of the trait of interest. This is an exact match.
 #' @param species String name of the species of interest
+#' @param cutoff Numeric (float) maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.
 #' @return Dataframe results of query
 #' @export list_bp_by_trait_for_species
-list_bp_by_trait_for_species <- function(trait, species) {
+list_bp_by_trait_for_species <- function(trait, species, cutoff) {
   # Input validation
   results <- tryCatch(
     {
@@ -81,6 +92,8 @@ list_bp_by_trait_for_species <- function(trait, species) {
         stop("Trait is undefined.")
       if (is.null(species))
         stop("Species is undefined.")
+      if (!is.null(cutoff) & !is.na(cutoff) & !is.numeric(cutoff))
+        stop("Cutoff value provided is invalid. Please enter a decimal number between 0.0 and 1.0")
       conn <- connect()
       # For prepared statements, we cannot use dbGetQuery because
       # the action must be performed separatedly
@@ -105,11 +118,18 @@ list_bp_by_trait_for_species <- function(trait, species) {
       AND s.binomial = $2
       AND gres.cofactor = 1
       "
-
+      # When a cutoff p-value is provided, add the condition to the SQL statement
+      if (!is.null(cutoff)) {
+        stmt <- paste0(stmt, "\nAND gres.model_added_pval <= $3")
+      }
       # Step 2: Send query
       res <- RPostgres::dbSendQuery(conn = conn, statement = stmt)
       # Step 3: Bind parameters
       params <- list(trait, species)
+      # When a cutoff p-value is provided, add the cutoff value to the parameter list
+      if (!is.null(cutoff)) {
+        params <- c(params, cutoff)
+      }
       RPostgres::dbBind(res = res, params = params)
       # Step 4: Fetch results
       results <- RPostgres::dbFetch(res)
@@ -128,7 +148,7 @@ list_bp_by_trait_for_species <- function(trait, species) {
       if (exists("res"))
         RPostgres::dbClearResult(res = res)
       # Step 6: Close up connection to database
-      RPostgres::dbDisconnect(conn)
+      # RPostgres::dbDisconnect(conn)
     }
   )
 }

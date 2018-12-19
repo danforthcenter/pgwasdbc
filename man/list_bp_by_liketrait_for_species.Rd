@@ -4,12 +4,14 @@
 \alias{list_bp_by_liketrait_for_species}
 \title{List the chromosome and SNP position for a given trait and species}
 \usage{
-list_bp_by_liketrait_for_species(trait, species)
+list_bp_by_liketrait_for_species(trait, species, cutoff)
 }
 \arguments{
 \item{trait}{String name of the trait of interest. This will match any trait that contains this value.}
 
 \item{species}{String name of the species of interest}
+
+\item{cutoff}{Numeric (float) maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.}
 }
 \value{
 Dataframe results of query
