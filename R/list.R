@@ -2,7 +2,7 @@
 #' @description List all the known unique traits for all datasets
 #' @return List
 #' @export list_traits
-traits <- function() {
+list_traits <- function() {
   results <- tryCatch(
     {
       conn <- connect()
@@ -27,7 +27,7 @@ traits <- function() {
 #' @description List all the known unique species for all datasets
 #' @return List
 #' @export list_species
-species <- function() {
+list_species <- function() {
   results <- tryCatch(
     {
       conn <- connect()
@@ -52,7 +52,7 @@ species <- function() {
 #' @description List all the known unique growouts for all datasets
 #' @return List
 #' @export list_growouts
-growouts <- function() {
+list_growouts <- function() {
   results <- tryCatch(
     {
       conn <- connect()
