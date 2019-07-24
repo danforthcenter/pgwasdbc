@@ -4,8 +4,8 @@
 \alias{connect}
 \title{Connection}
 \usage{
-connect(drv = RPostgres::Postgres(), dbname = "baxdb",
-  host = "localhost", port = 5434, user = "postgres",
+connect(drv = RPostgres::Postgres(), dbname = "pgwasdb_3011261_qa",
+  host = "10.5.1.102", port = 5432, user = "pgwasdb_qa_owner",
   password = "password")
 }
 \arguments{
