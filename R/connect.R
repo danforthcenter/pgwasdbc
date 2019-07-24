@@ -9,10 +9,10 @@
 #' @param password String (default: password)
 #' @return A connection object
 connect <- function(drv = RPostgres::Postgres(),
-                    dbname = "baxdb",
-                    host = "localhost",
-                    port = 5434,
-                    user = "postgres",
+                    dbname = "pgwasdb_3011261_qa",
+                    host = "10.5.1.102",
+                    port = 5432,
+                    user = "pgwasdb_qa_owner",
                     password = "password"
                     ) {
   conn <- RPostgres::dbConnect(drv = drv, dbname = dbname, host = host, port = port, user = user, password = password)
