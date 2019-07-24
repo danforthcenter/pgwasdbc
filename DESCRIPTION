@@ -1,7 +1,7 @@
-Package: gwasdbconnector
+Package: pgwasdbc
 Type: Package
-Title: GWAS Database Connection Wrapper
-Version: 0.1.0
+Title: GWAS Database Connection R Package
+Version: 0.2.0
 Author: Tim Parker
 Maintainer: Tim Parker <tparker@danforthcenter.org>
 Description: Handles and maintains connection to GWAS database

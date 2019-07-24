@@ -1,4 +1,4 @@
-# GWAS Database Connector
+# PGWAS Database Connector 'pgwasdbc'
 
 ## Installation
 
@@ -12,7 +12,7 @@ devtools::install_github("tparker/deathly-parsley")
 
 ## Usage
 
-To query the database from your code, you can use the namespace `gwasdbconnector`.
+To query the database from your code, you can use the namespace `pgwasdbc`.
 
 Below is a list of the functions available.
 
