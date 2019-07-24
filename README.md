@@ -1,4 +1,4 @@
-# PGWAS Database Connector 'pgwasdbc'
+# Plant Genome-wide Association Study Database Connector (PGWASDBC)
 
 ## Installation
 
@@ -7,7 +7,7 @@ Use [devtools](https://cran.r-project.org/web/packages/devtools/index.html) or
 is an example of how to install the package using `devtools`.
 
 ```R
-devtools::install_github("tparker/deathly-parsley")
+devtools::install_github("tparkerd/pgwasdbc")
 ```
 
 ## Usage
