@@ -18,16 +18,16 @@ Below is a list of the functions available.
 
 ### `list_bp_by_liketrait_for_species`(trait, species, cutoff)`
 List of SNP number, chromosome, trait, for a species given a p-value cutoff
-
+#### Arguments
     trait (string) - name of the trait (case insensitive)
-    species (string) - binomial name of species (e.g., 'Zea mays')
+    species (string) - binomial name of species (e.g., "Zea mays")
     cutoff (numeric) - maximum p-value cutoff, exclusive
 
 ### `list_bp_by_trait_for_species`(trait, species, cutoff)`
 List of SNP number, chromosome, trait, for a species given a p-value cutoff
-
+#### Arguments
     trait (string) - name of the trait (case insensitive)
-    species (string) - binomial name of species (e.g., 'Zea mays')
+    species (string) - binomial name of species (e.g., "Zea mays")
     cutoff (numeric) - maximum p-value cutoff, exclusive
 
 ### `list_traits()`
@@ -43,8 +43,8 @@ Lists growout name and location code for all growouts
 Execute a SQL statement; allows to running custom queries against the database.
 Permitted actions are limited by granted permissions on database for assigned
 user.
-
-    sql (string) - SQL statement (e.g., SELECT * FROM species)
+#### Arguments
+    sql (string) - SQL statement (e.g., "SELECT * FROM species")
 
 ### Example of pulling trait data using predefined queries
 ```R
