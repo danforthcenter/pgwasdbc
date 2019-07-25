@@ -73,4 +73,63 @@ list_growouts <- function() {
   )
 }
 
+#' List the trait names for a given species
+#' @description Given a species (binomial name), return the known traits
+#' The species string must be an exact match.
+#' @param species String binomial name of the species of interest
+#' @return Dataframe results of query
+#' @export list_traits_for_species
+list_traits_for_species <- function(species) {
+  # Input validation
+  results <- tryCatch(
+    {
+      if (is.null(species))
+        stop("Species is undefined.")
+      conn <- connect()
+      # For prepared statements, we cannot use dbGetQuery because
+      # the action must be performed separatedly
+
+      # Step 1: Statement w/ placeholders
+      stmt <- " SELECT
+                DISTINCT(t.trait_name)
+                FROM
+                  trait t
+                INNER JOIN phenotype ph ON
+                  ph.phenotype_trait = t.trait_id
+                INNER JOIN \"line\" l ON
+                  ph.phenotype_line = l.line_id
+                INNER JOIN population p ON
+                  l.line_population = p.population_id
+                INNER JOIN species s ON
+                  p.population_species = s.species_id
+                WHERE s.binomial ILIKE $1
+                ORDER BY t.trait_name
+              "
+      # Step 2: Send query
+      res <- RPostgres::dbSendQuery(conn = conn, statement = stmt)
+      # Step 3: Bind parameters
+      species <- paste0("%", species, "%")
+      params <- list(species)
+      RPostgres::dbBind(res = res, params = params)
+      # Step 4: Fetch results
+      results <- RPostgres::dbFetch(res)
+      return(results)
+    },
+    error=function(cond) {
+      message(cond)
+      return(NA)
+    },
+    warning=function(cond) {
+      message(cond)
+      return(NULL)
+    },
+    finally={
+      # Step 5: Clear results
+      if (exists("res"))
+        RPostgres::dbClearResult(res = res)
+      # Step 6: Close up connection to database
+      # RPostgres::dbDisconnect(conn)
+    }
+  )
+}
 
