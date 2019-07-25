@@ -21,14 +21,14 @@ List of SNP number, chromosome, trait, for a species given a p-value cutoff
 #### Arguments
     trait (string) - name of the trait (case insensitive)
     species (string) - binomial name of species (e.g., "Zea mays")
-    cutoff (numeric) - maximum p-value cutoff, exclusive
+    cutoff (numeric) - maximum p-value cutoff, inclusive
 
 ### `list_bp_by_trait_for_species`(trait, species, cutoff)`
 List of SNP number, chromosome, trait, for a species given a p-value cutoff
 #### Arguments
     trait (string) - name of the trait (case insensitive)
     species (string) - binomial name of species (e.g., "Zea mays")
-    cutoff (numeric) - maximum p-value cutoff, exclusive
+    cutoff (numeric) - maximum p-value cutoff, inclusive
 
 ### `list_traits()`
 List name of all traits
@@ -38,6 +38,12 @@ Lists binomial name and shortname for all species
 
 ### `list_growouts()`
 Lists growout name and location code for all growouts
+
+### `list_traits_for_species(species)`
+Lists all known traits for a given species (by binomial name)
+
+#### Arguemnts
+    species (string) - binomial name of species
 
 ### `query(sql)`
 Execute a SQL statement; allows to running custom queries against the database.
