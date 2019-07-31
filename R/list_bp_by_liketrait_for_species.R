@@ -157,8 +157,9 @@ list_bp_by_trait_for_species <- function(trait, species, cutoff = 0.05) {
 #' List the chromosome and SNP position for a given a species for all its traits
 #' @description Given a species, return the chromosome and SNP position for all of its traits.
 #' @seealso \code{\link{list_bp_for_species}}
-#' @param species String name of the species of interest
-#' @param cutoff Numeric (float) maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.
+#' @param species (string) Name of the species of interest
+#' @param cutoff (float) Numeric maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.
+#' @param model (string) Name model used to process SNP information during GWAS
 #' @return Dataframe results of query
 #' @export list_bp_for_species
 list_bp_for_species <- function(species, cutoff = 0.05, model='MaxCof') {

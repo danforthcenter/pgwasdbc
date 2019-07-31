@@ -7,9 +7,11 @@
 list_bp_for_species(species, cutoff = 0.05, model = "MaxCof")
 }
 \arguments{
-\item{species}{String name of the species of interest}
+\item{species}{(string) Name of the species of interest}
 
-\item{cutoff}{Numeric (float) maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.}
+\item{cutoff}{(float) Numeric maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.}
+
+\item{model}{(string) Name model used to process SNP information during GWAS}
 }
 \value{
 Dataframe results of query
