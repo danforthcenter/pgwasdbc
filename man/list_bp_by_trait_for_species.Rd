@@ -4,7 +4,7 @@
 \alias{list_bp_by_trait_for_species}
 \title{List the chromosome and SNP position for a given trait and species}
 \usage{
-list_bp_by_trait_for_species(trait, species, cutoff)
+list_bp_by_trait_for_species(trait, species, cutoff = 0.05)
 }
 \arguments{
 \item{trait}{String name of the trait of interest. This is an exact match.}
