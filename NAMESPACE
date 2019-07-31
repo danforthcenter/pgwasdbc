@@ -2,6 +2,7 @@
 
 export(list_bp_by_liketrait_for_species)
 export(list_bp_by_trait_for_species)
+export(list_bp_for_species)
 export(list_growouts)
 export(list_species)
 export(list_traits)

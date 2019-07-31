@@ -160,7 +160,7 @@ list_bp_by_trait_for_species <- function(trait, species, cutoff = 0.05) {
 #' @param species String name of the species of interest
 #' @param cutoff Numeric (float) maximum value for model added p-value. The results will have a p-value less than or equal to the cutoff value specified.
 #' @return Dataframe results of query
-#' @export list_bp_by_trait_for_species
+#' @export list_bp_for_species
 list_bp_for_species <- function(species, cutoff = 0.05, model='MaxCof') {
   # Input validation
   results <- tryCatch(
