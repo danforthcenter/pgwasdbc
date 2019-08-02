@@ -54,7 +54,7 @@ user.
 
 ### Example of pulling trait data using predefined queries
 ```R
-gwasdbconnector::list_bp_by_liketrait_for_species(trait = "As75", cutoff = 0.01, species = "Zea mays")
+pgwasdbc::list_bp_by_liketrait_for_species(trait = "As75", cutoff = 0.01, species = "Zea mays")
 ```
 
 ### Example user-defined query
