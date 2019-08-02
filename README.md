@@ -16,10 +16,10 @@ To query the database from your code, you can use the namespace `pgwasdbc`.
 
 Below is a list of the functions available.
 
-### `list_bp_by_liketrait_for_species`(trait, species, cutoff)`
+### `list_bp_by_liketrait_for_species(trait, species, cutoff)`
 List of SNP number, chromosome, trait, for a species given a p-value cutoff
 #### Arguments
-    trait (string) - name of the trait (case insensitive)
+    trait (string) - name of the trait (case insensitive), the name can be a substring of the desired trait
     species (string) - binomial name of species (e.g., "Zea mays")
     cutoff (numeric) - maximum p-value cutoff, inclusive
 
@@ -59,12 +59,12 @@ gwasdbconnector::list_bp_by_liketrait_for_species(trait = "As75", cutoff = 0.01,
 
 ### Example user-defined query
 ```R
-gwasdbconnector::query("SELECT * from trait")
+pgwasdbc::query("SELECT * from trait")
 ```
 
 ## Troubleshooting
 
-Since this package depends on postgreSQL drivers, you may need to manually
+Since this package depends on PostgreSQL drivers, you may need to manually
 install your operating system's respective Postgres development drivers. 
 
 **Debian, Ubuntu**
