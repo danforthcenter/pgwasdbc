@@ -7,7 +7,7 @@ Use [devtools](https://cran.r-project.org/web/packages/devtools/index.html) or
 is an example of how to install the package using `devtools`.
 
 ```R
-devtools::install_github("tparkerd/pgwasdbc")
+devtools::install_github("danforthcenter/pgwasdbc")
 ```
 
 ## Usage
